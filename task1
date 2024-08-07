@@ -1,0 +1,23 @@
+<div class="login-interface">
+  <label for="loginUsername">Username:</label>
+  <input type="text" class="input-field" id="loginUsername" name="username">
+
+  <label for="loginPassword">Password:</label>
+  <input type="password" class="input-field" id="loginPassword" name="password">
+
+  <button id="loginAction" class="action-btn" onclick="processLogin()">Login</button>
+  <div class="feedback-message" id="loginFeedback" style="display: none;"></div>
+</div>
+
+<script>
+function processLogin() {
+  var username = document.getElementById('loginUsername').value;
+  var feedbackElement = document.getElementById('loginFeedback');
+  feedbackElement.innerHTML = 'Invalid credentials for user: ' + sanitizeInput(username);
+  feedbackElement.style.display = 'block';
+}
+
+function processInput(input) {
+  return input.replace(/<script>/gi, "").replace(/<\/script>/gi, "");
+}
+</script>
